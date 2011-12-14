@@ -1550,4 +1550,4 @@ BigInt = module.exports = {
 	'millerRabin': millerRabin, 'base': base
 };
 
-)();
+})();
