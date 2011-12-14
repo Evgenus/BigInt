@@ -1502,10 +1502,12 @@ function mont_(x,y,n,np) {
   copy_(x,sa);
 }
 
-
+function base(b) {
+	digitsStr = b;
+}
 
 if (typeof module !== 'undefined') {
-	module.export = {
+	module.exports = {
 		'add': add, 'addInt': addInt, 'bigInt2str': bigInt2str, 'bitSize': bitSize,
 		'dup': dup, 'equals': equals, 'equalsInt': equalsInt, 'expand': expand,
 		'findPrimes': findPrimes, 'GCD': GCD, 'greater': greater,
@@ -1526,6 +1528,6 @@ if (typeof module !== 'undefined') {
 		'subShift_': subShift_, 'powMod_': powMod_, 'eGCD_': eGCD_,
 		'inverseMod_': inverseMod_, 'GCD_': GCD_, 'mont_': mont_, 'divide_': divide_,
 		'squareMod_': squareMod_, 'randTruePrime_': randTruePrime_,
-		'millerRabin': millerRabin
-	}
+		'millerRabin': millerRabin, 'base': base
+	};
 }
