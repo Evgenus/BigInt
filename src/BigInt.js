@@ -1,3 +1,5 @@
+// Vjeux: Customized bigInt2str and str2bigInt in order to accept custom base.
+
 ////////////////////////////////////////////////////////////////////////////////////////
 // Big Integer Library v. 5.4
 // Created 2000, last modified 2009
@@ -176,6 +178,7 @@
 //       Montgomery reduction, but that's obviously wrong.
 ////////////////////////////////////////////////////////////////////////////////////////
 
+(function () {
 //globals
 bpe=0;         //bits stored per array element
 mask=0;        //AND this with an array element to chop it down to bpe bits
@@ -977,8 +980,15 @@ function int2bigInt(t,bits,minSize) {
 //Pad the array with leading zeros so that it has at least minSize elements.
 //If base=-1, then it reads in a space-separated list of array elements in decimal.
 //The array will always have at least one leading zero, unless base=-1.
-function str2bigInt(s,base,minSize) {
-  var d, i, j, x, y, kk;
+function str2bigInt(s,b,minSize) {
+  var d, i, j, base, str, x, y, kk;
+  if (typeof b === 'string') {
+	  base = b.length;
+	  str = b;
+  } else {
+	  base = b;
+	  str = digitsStr;
+  }
   var k=s.length;
   if (base==-1) { //comma-separated list of array elements in decimal
     x=new Array(0);
@@ -1005,11 +1015,11 @@ function str2bigInt(s,base,minSize) {
 
   x=int2bigInt(0,base*k,0);
   for (i=0;i<k;i++) {
-    d=digitsStr.indexOf(s.substring(i,i+1),0);
-    if (base<=36 && d>=36)  //convert lowercase to uppercase if base<=36
-      d-=26;
-    if (d>=base || d<0) {   //stop at first illegal character
-      break;
+    d=str.indexOf(s.substring(i,i+1),0);
+//    if (base<=36 && d>=36)  //convert lowercase to uppercase if base<=36
+//      d-=26;
+    if (d>=base || d<0) {   //ignore illegal characters
+      continue;
     }
     multInt_(x,base);
     addInt_(x,d);
@@ -1069,8 +1079,15 @@ function isZero(x) {
 
 //convert a bigInt into a string in a given base, from base 2 up to base 95.
 //Base -1 prints the contents of the array representing the number.
-function bigInt2str(x,base) {
-  var i,t,s="";
+function bigInt2str(x,b) {
+  var i,t,base,str,s="";
+  if (typeof b === 'string') {
+	  base = b.length;
+	  str = b;
+  } else {
+	  base = b;
+	  str = digitsStr;
+  }
 
   if (s6.length!=x.length)
     s6=dup(x);
@@ -1085,11 +1102,11 @@ function bigInt2str(x,base) {
   else { //return it in the given base
     while (!isZero(s6)) {
       t=divInt_(s6,base);  //t=s6 % base; s6=floor(s6/base);
-      s=digitsStr.substring(t,t+1)+s;
+      s=str.substring(t,t+1)+s;
     }
   }
   if (s.length==0)
-    s="0";
+    s=str[0];
   return s;
 }
 
@@ -1506,28 +1523,31 @@ function base(b) {
 	digitsStr = b;
 }
 
-if (typeof module !== 'undefined') {
-	module.exports = {
-		'add': add, 'addInt': addInt, 'bigInt2str': bigInt2str, 'bitSize': bitSize,
-		'dup': dup, 'equals': equals, 'equalsInt': equalsInt, 'expand': expand,
-		'findPrimes': findPrimes, 'GCD': GCD, 'greater': greater,
-		'greaterShift': greaterShift, 'int2bigInt': int2bigInt,
-		'inverseMod': inverseMod, 'inverseModInt': inverseModInt, 'isZero': isZero,
-		'millerRabin': millerRabin, 'millerRabinInt': millerRabinInt, 'mod': mod,
-		'modInt': modInt, 'mult': mult, 'multMod': multMod, 'negative': negative,
-		'powMod': powMod, 'randBigInt': randBigInt, 'randTruePrime': randTruePrime,
-		'randProbPrime': randProbPrime, 'str2bigInt': str2bigInt, 'sub': sub,
-		'trim': trim, 'addInt_': addInt_, 'add_': add_, 'copy_': copy_,
-		'copyInt_': copyInt_, 'GCD_': GCD_, 'inverseMod_': inverseMod_, 'mod_': mod_,
-		'mult_': mult_, 'multMod_': multMod_, 'powMod_': powMod_,
-		'randBigInt_': randBigInt_, 'randTruePrime_': randTruePrime_, 'sub_': sub_,
-		'addShift_': addShift_, 'carry_': carry_, 'divide_': divide_,
-		'divInt_': divInt_, 'eGCD_': eGCD_, 'halve_': halve_, 'leftShift_': leftShift_,
-		'linComb_': linComb_, 'linCombShift_': linCombShift_, 'mont_': mont_,
-		'multInt_': multInt_, 'rightShift_': rightShift_, 'squareMod_': squareMod_,
-		'subShift_': subShift_, 'powMod_': powMod_, 'eGCD_': eGCD_,
-		'inverseMod_': inverseMod_, 'GCD_': GCD_, 'mont_': mont_, 'divide_': divide_,
-		'squareMod_': squareMod_, 'randTruePrime_': randTruePrime_,
-		'millerRabin': millerRabin, 'base': base
-	};
+if (typeof module === 'undefined') {
+	module = {};
 }
+BigInt = module.exports = {
+	'add': add, 'addInt': addInt, 'bigInt2str': bigInt2str, 'bitSize': bitSize,
+	'dup': dup, 'equals': equals, 'equalsInt': equalsInt, 'expand': expand,
+	'findPrimes': findPrimes, 'GCD': GCD, 'greater': greater,
+	'greaterShift': greaterShift, 'int2bigInt': int2bigInt,
+	'inverseMod': inverseMod, 'inverseModInt': inverseModInt, 'isZero': isZero,
+	'millerRabin': millerRabin, 'millerRabinInt': millerRabinInt, 'mod': mod,
+	'modInt': modInt, 'mult': mult, 'multMod': multMod, 'negative': negative,
+	'powMod': powMod, 'randBigInt': randBigInt, 'randTruePrime': randTruePrime,
+	'randProbPrime': randProbPrime, 'str2bigInt': str2bigInt, 'sub': sub,
+	'trim': trim, 'addInt_': addInt_, 'add_': add_, 'copy_': copy_,
+	'copyInt_': copyInt_, 'GCD_': GCD_, 'inverseMod_': inverseMod_, 'mod_': mod_,
+	'mult_': mult_, 'multMod_': multMod_, 'powMod_': powMod_,
+	'randBigInt_': randBigInt_, 'randTruePrime_': randTruePrime_, 'sub_': sub_,
+	'addShift_': addShift_, 'carry_': carry_, 'divide_': divide_,
+	'divInt_': divInt_, 'eGCD_': eGCD_, 'halve_': halve_, 'leftShift_': leftShift_,
+	'linComb_': linComb_, 'linCombShift_': linCombShift_, 'mont_': mont_,
+	'multInt_': multInt_, 'rightShift_': rightShift_, 'squareMod_': squareMod_,
+	'subShift_': subShift_, 'powMod_': powMod_, 'eGCD_': eGCD_,
+	'inverseMod_': inverseMod_, 'GCD_': GCD_, 'mont_': mont_, 'divide_': divide_,
+	'squareMod_': squareMod_, 'randTruePrime_': randTruePrime_,
+	'millerRabin': millerRabin, 'base': base
+};
+
+)();
