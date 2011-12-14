@@ -1519,10 +1519,6 @@ function mont_(x,y,n,np) {
   copy_(x,sa);
 }
 
-function base(b) {
-	digitsStr = b;
-}
-
 if (typeof module === 'undefined') {
 	module = {};
 }
@@ -1547,7 +1543,7 @@ BigInt = module.exports = {
 	'subShift_': subShift_, 'powMod_': powMod_, 'eGCD_': eGCD_,
 	'inverseMod_': inverseMod_, 'GCD_': GCD_, 'mont_': mont_, 'divide_': divide_,
 	'squareMod_': squareMod_, 'randTruePrime_': randTruePrime_,
-	'millerRabin': millerRabin, 'base': base
+	'millerRabin': millerRabin
 };
 
 })();
