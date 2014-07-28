@@ -1,18 +1,33 @@
 {
-	"name": "BigInt",
-	"version": "5.5.0",
-	"description": "Big Integer Library in pure Javascript",
-	"keywords": ["bigint"],
-	"homepage": "http://www.leemon.com/crypto/BigInt.html",
-	"author": {
-		"name": "Leemon Baird",
-		"email": "Leemon@Leemon.com",
-		"url": "http://www.leemon.com/"
-	},
-	"files": ["src/BigInt.js"],
-	"main": "src/BigInt.js",
-	"repository": {
-		"type": "git",
-		"url": "http://github.com/vjeux/BigInt.git"
-	}
+    "name": "BigInt",
+    "version": "5.5.1",
+    "description": "Big Integer Library in pure Javascript by Leemon",
+    "keywords": ["bigint", "leemon"],
+    "homepage": "http://www.leemon.com/crypto/BigInt.html",
+    "author": {
+        "name": "Leemon Baird",
+        "email": "Leemon@Leemon.com",
+        "url": "http://www.leemon.com/"
+    },
+    "bugs": {
+        "url": "https://github.com/Evgenus/BigInt/issues"
+    },
+    "files": ["src/BigInt.js"],
+    "main": "src/BigInt.js",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/Evgenus/BigInt.git"
+    },
+    "maintainers": [
+        {
+            "name": "Eugene Chernyshov",
+            "email": "chernyshov.eugene@gmail.com",
+            "web": "http://ev-genus.org"
+        },
+        {
+            "name": "Christopher Chedeau",
+            "email": "vjeuxx@gmail.com",
+            "web": "http://blog.vjeux.com"
+        }
+    ]
 }
