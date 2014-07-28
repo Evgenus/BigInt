@@ -200,6 +200,10 @@
 
     var trueRandom = function () { return Math.random(); };
 
+    function setRandom(random) {
+        trueRandom = random;
+    }
+
     //globals
     var bpe=0;         //bits stored per array element
     var mask=0;        //AND this with an array element to chop it down to bpe bits
