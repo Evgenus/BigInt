@@ -131,7 +131,7 @@
 // void carry_(x)               //do carries and borrows so each element of the bigInt x fits in bpe bits.
 // void divide_(x,y,q,r)        //divide x by y giving quotient q and remainder r
 // int  divInt_(x,n)            //do x=floor(x/n) for bigInt x and integer n, and return the remainder. (This never overflows its array).
-// int  eGCD_(x,y,d,a,b)        //sets a,b,d to positive bigInts such that d = GCD_(x,y) = a*x-b*y
+// void eGCD_(x,y,d,a,b)        //sets a,b,d to positive bigInts such that d = GCD_(x,y) = a*x-b*y
 // void halve_(x)               //do x=floor(|x|/2)*sgn(x) for bigInt x in 2's complement.  (This never overflows its array).
 // void leftShift_(x,n)         //left shift bigInt x by n bits.  n<bpe.
 // void linComb_(x,y,a,b)       //do x=a*x+b*y for bigInts x and y and integers a and b
@@ -1290,7 +1290,7 @@ function bigInt2str(x,b) {
       }
     }
 
-    //do x=x+(y<<(ys*bpe)) for bigInts x and y, and integers a,b and ys.
+    //do x=x+(y<<(ys*bpe)) for bigInts x and y, and integer ys.
     //x must be large enough to hold the answer.
     function addShift_(x,y,ys) {
       var i,c,k,kk;
@@ -1308,7 +1308,7 @@ function bigInt2str(x,b) {
       }
     }
 
-    //do x=x-(y<<(ys*bpe)) for bigInts x and y, and integers a,b and ys.
+    //do x=x-(y<<(ys*bpe)) for bigInts x and y, and integer ys.
     //x must be large enough to hold the answer.
     function subShift_(x,y,ys) {
       var i,c,k,kk;
