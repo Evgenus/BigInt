@@ -1005,15 +1005,15 @@
     //Pad the array with leading zeros so that it has at least minSize elements.
     //If base=-1, then it reads in a space-separated list of array elements in decimal.
     //The array will always have at least one leading zero, unless base=-1.
-function str2bigInt(s,b,minSize) {
-  var d, i, j, base, str, x, y, kk;
-  if (typeof b === 'string') {
-	  base = b.length;
-	  str = b;
-  } else {
-	  base = b;
-	  str = digitsStr;
-  }
+    function str2bigInt(s,b,minSize) {
+      var d, i, j, base, str, x, y, kk;
+      if (typeof b === 'string') {
+          base = b.length;
+          str = b;
+      } else {
+          base = b;
+          str = digitsStr;
+      }
       var k=s.length;
       if (base==-1) { //comma-separated list of array elements in decimal
         x=new Array(0);
@@ -1039,11 +1039,11 @@ function str2bigInt(s,b,minSize) {
       }
 
       x=int2bigInt(0,base*k,0);
-      for (i=0;i<k;i++) {
-    d=str.indexOf(s.substring(i,i+1),0);
+    for (i=0;i<k;i++) {
+      d=str.indexOf(s.substring(i,i+1),0);
 //    if (base<=36 && d>=36)  //convert lowercase to uppercase if base<=36
 //      d-=26;
-    if (d>=base || d<0) {   //ignore illegal characters
+      if (d>=base || d<0) {   //ignore illegal characters
       continue;
         }
         multInt_(x,base);
@@ -1104,15 +1104,15 @@ function str2bigInt(s,b,minSize) {
 
     //convert a bigInt into a string in a given base, from base 2 up to base 95.
     //Base -1 prints the contents of the array representing the number.
-function bigInt2str(x,b) {
-  var i,t,base,str,s="";
-  if (typeof b === 'string') {
-	  base = b.length;
-	  str = b;
-  } else {
-	  base = b;
-	  str = digitsStr;
-  }
+    function bigInt2str(x,b) {
+      var i,t,base,str,s="";
+      if (typeof b === 'string') {
+          base = b.length;
+          str = b;
+      } else {
+          base = b;
+          str = digitsStr;
+      }
 
       if (s6.length!=x.length)
         s6=dup(x);
