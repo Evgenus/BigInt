@@ -1,6 +1,6 @@
 {
   "name": "BigInt",
-  "version": "5.5.2",
+  "version": "5.5.3",
   "description": "Big Integer Library in pure Javascript by Leemon",
   "keywords": [
     "bigint",
@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "mocha --require chai --reporter spec"
-  }, 
+  },
   "bugs": {
     "url": "https://github.com/Evgenus/BigInt/issues"
   },
