@@ -1,6 +1,6 @@
 {
     "name": "BigInt",
-    "version": "5.5.1",
+    "version": "5.5.2",
     "description": "Big Integer Library in pure Javascript by Leemon",
     "keywords": ["bigint", "leemon"],
     "homepage": "http://www.leemon.com/crypto/BigInt.html",
