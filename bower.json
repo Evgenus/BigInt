@@ -1,40 +1,44 @@
 {
-    "name": "big-int",
-    "version": "5.5.1",
-    "homepage": "https://github.com/Evgenus/BigInt",
-    "authors": [{
-        "name": "Leemon Baird",
-        "email": "Leemon@Leemon.com",
-        "homepage": "http://www.leemon.com/"
-    }, {
-        "name": "Eugene Chernyshov",
-        "email": "chernyshov.eugene@gmail.com",
-        "homepage": "http://ev-genus.org"
-    }, {
-        "name": "Christopher Chedeau",
-        "email": "vjeuxx@gmail.com",
-        "homepage": "http://blog.vjeux.com"
-    }],
-    "description": "Big Integer Library by Leemon",
-    "main": "src/BigInt.js",
-    "repository": {
-        "type": "git",
-        "url": "http://github.com/Evgenus/BigInt.git"
+  "name": "big-int",
+  "version": "5.5.2",
+  "homepage": "https://github.com/Evgenus/BigInt",
+  "authors": [
+    {
+      "name": "Leemon Baird",
+      "email": "Leemon@Leemon.com",
+      "homepage": "http://www.leemon.com/"
     },
-    "moduleType": [
-        "amd",
-        "node"
-    ],
-    "keywords": [
-        "bigint",
-        "leemon"
-    ],
-    "license": "MIT",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ]
+    {
+      "name": "Eugene Chernyshov",
+      "email": "chernyshov.eugene@gmail.com",
+      "homepage": "http://ev-genus.org"
+    },
+    {
+      "name": "Christopher Chedeau",
+      "email": "vjeuxx@gmail.com",
+      "homepage": "http://blog.vjeux.com"
+    }
+  ],
+  "description": "Big Integer Library by Leemon",
+  "main": "src/BigInt.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/Evgenus/BigInt.git"
+  },
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "bigint",
+    "leemon"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
