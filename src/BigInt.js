@@ -1041,8 +1041,9 @@
       x=int2bigInt(0,base*k,0);
     for (i=0;i<k;i++) {
       d=str.indexOf(s.substring(i,i+1),0);
-//    if (base<=36 && d>=36)  //convert lowercase to uppercase if base<=36
-//      d-=26;
+      if (base<=36 && d>=36) { //convert lowercase to uppercase if base<=36
+        d-=26;
+      }
       if (d>=base || d<0) {   //ignore illegal characters
       continue;
         }
