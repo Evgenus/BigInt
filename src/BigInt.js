@@ -473,7 +473,7 @@
     //generate a k-bit true random prime using Maurer's algorithm,
     //and put it into ans.  The bigInt ans must be large enough to hold it.
     function randTruePrime_(ans,k) {
-      var c,m,pm,dd,j,r,B,divisible,z,zz,recSize;
+      var c,m,pm,dd,j,r,B,divisible,w,z,zz,recSize;
 
       if (primes.length==0)
         primes=findPrimes(30000);  //check for divisibility by primes <=30000
